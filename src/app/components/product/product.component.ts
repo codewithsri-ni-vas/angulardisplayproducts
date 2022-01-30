@@ -15,6 +15,7 @@ class Product {
 })
 export class ProductComponent implements OnInit {
   products: Product[]=[];
+  cartList: Product[]=[];
   constructor() {
 
   }
@@ -60,4 +61,11 @@ export class ProductComponent implements OnInit {
 
   }
 
+  addToCart(item: Product) {
+    this.cartList.push(item);
+  }
+
+  total() {
+    return this.cartList.reduce((total, item) => total + item.price, 0)
+  }
 }
